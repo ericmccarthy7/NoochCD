@@ -45,8 +45,10 @@ function NoochCooldowns(msg)
             local remaining = GetCooldownLeft(startTime, duration)
             local from = date("%Y%m%dT%H%M%S", time() + remaining)
             local to = date("%Y%m%dT%H%M%S", time() + remaining + 300)
+            local playerName = UnitName("player")
+            local serverName = GetRealmName()
             currentDate = from .. "%2F" .. to
-            currentTitle = saltShakerText
+            currentTitle = saltShakerText .. "+(" .. playerName .. "-" .. serverName .. ")"
             StaticPopup_Show("NOOCH_COPYPASTA")
         end
     elseif(msg == "alch") then
@@ -57,8 +59,10 @@ function NoochCooldowns(msg)
             local remaining = GetCooldownLeft(startTime, duration)
             local from = date("%Y%m%dT%H%M%S", time() + remaining)
             local to = date("%Y%m%dT%H%M%S", time() + remaining + 300)
+            local playerName = UnitName("player")
+            local serverName = GetRealmName()
             currentDate = from .. "%2F" .. to
-            currentTitle = transmuteText
+            currentTitle = transmuteText .. "+(" .. playerName .. "-" .. serverName .. ")"
             StaticPopup_Show("NOOCH_COPYPASTA")
         end
     elseif(msg == "cloth") then
@@ -69,8 +73,10 @@ function NoochCooldowns(msg)
             local remaining = GetCooldownLeft(startTime, duration)
             local from = date("%Y%m%dT%H%M%S", time() + remaining)
             local to = date("%Y%m%dT%H%M%S", time() + remaining + 300)
+            local playerName = UnitName("player")
+            local serverName = GetRealmName()
             currentDate = from .. "%2F" .. to
-            currentTitle = moonclothText
+            currentTitle = moonclothText .. "+(" .. playerName .. "-" .. serverName .. ")"
             StaticPopup_Show("NOOCH_COPYPASTA")
 
         end
