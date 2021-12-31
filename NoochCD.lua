@@ -75,7 +75,13 @@ function NoochCooldowns(msg)
 
         end
     else
-        StaticPopup_Show("NOOCH_ERRORDIALOG")
+        print("---------------------------------------------------")
+        print("Welcome to NoochCD.")
+        print("type /nooch or /n to bring up this menu")
+        print("Salt shaker reminder: /cd lw")
+        print("Transmute arcanite reminder: /cd alch")
+        print("Mooncloth reminder: /cd cloth")
+        print("---------------------------------------------------")
     end
 end
 
@@ -101,4 +107,5 @@ end
 
 SLASH_NOOCH1 = "/nooch"
 SLASH_NOOCH2 = "/n"
+SLASH_NOOCH3 = "/cd"
 SlashCmdList["NOOCH"] = NoochCooldowns
