@@ -1,6 +1,6 @@
-## Interface: 11400
+## Interface: 11505
 ## Title: Nooch Cooldowns
 ## Notes: Generates calendar reminders for multi-day cooldowns. (Saltshaker, etc.)
 ## Author: Nooch
-## Version: 0.0.1
+## Version: 0.0.2
 NoochCD.lua
