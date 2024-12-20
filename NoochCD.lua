@@ -38,7 +38,7 @@ StaticPopupDialogs["NOOCH_ERRORDIALOG"] = {
 function NoochCooldowns(msg)
     -- TODO: check salt shaker in inventory.
     if(msg == "lw") then
-        startTime, duration, enable = GetItemCooldown(15846)
+        startTime, duration, enable = C_Container.GetItemCooldown(15846)
         if(startTime == 0) then
             StaticPopup_Show("NOOCH_ERRORDIALOG")
         else
