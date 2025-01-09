@@ -1,0 +1,6 @@
+<Bindings>
+	<!-- Show/Hide ActionBars -->
+	<Binding name="Toggle Action Bars" header="NoochCD" category="ADDONS">
+		NoochCDToggleActionBars()
+	</Binding>
+</Bindings>

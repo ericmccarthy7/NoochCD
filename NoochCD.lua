@@ -1,4 +1,4 @@
-saltShakerText = "WoW+Cooldown%3A+Salt+Shaker"
+ottomsaltShakerText = "WoW+Cooldown%3A+Salt+Shaker"
 moonclothText = "WoW+Cooldown%3A+Mooncloth"
 transmuteText = "WoW+Cooldown%3A+Transmute+Arcanite"
 
@@ -13,8 +13,9 @@ StaticPopupDialogs["NOOCH_COPYPASTA"] = {
     whileDead = true,
     hideOnEscape = true,
     hasEditBox = true,
-    OnShow = function (self, data)
-        self.editBox:SetText("https://www.google.com/calendar/render?action=TEMPLATE&text=" .. currentTitle .. "&dates=" .. currentDate)
+    OnShow = function(self, data)
+        self.editBox:SetText("https://www.google.com/calendar/render?action=TEMPLATE&text=" ..
+            currentTitle .. "&dates=" .. currentDate)
         self.editBox:HighlightText()
         self.editBox:SetFocus()
     end,
@@ -29,7 +30,7 @@ StaticPopupDialogs["NOOCH_ERRORDIALOG"] = {
     timeout = 0,
     whileDead = true,
     hideOnEscape = true,
-    OnShow = function (self, data)
+    OnShow = function(self, data)
         self.text:SetText("No cooldown / spell doesn't exist.")
         self.button1:SetFocus()
     end,
@@ -37,9 +38,9 @@ StaticPopupDialogs["NOOCH_ERRORDIALOG"] = {
 
 function NoochCooldowns(msg)
     -- TODO: check salt shaker in inventory.
-    if(msg == "lw") then
+    if (msg == "lw") then
         startTime, duration, enable = C_Container.GetItemCooldown(15846)
-        if(startTime == 0) then
+        if (startTime == 0) then
             StaticPopup_Show("NOOCH_ERRORDIALOG")
         else
             local remaining = GetCooldownLeft(startTime, duration)
@@ -51,9 +52,9 @@ function NoochCooldowns(msg)
             currentTitle = saltShakerText .. "+(" .. playerName .. "-" .. serverName .. ")"
             StaticPopup_Show("NOOCH_COPYPASTA")
         end
-    elseif(msg == "alch") then
+    elseif (msg == "alch") then
         startTime, duration, enable = GetSpellCooldown(17187)
-        if(startTime == 0) then
+        if (startTime == 0) then
             StaticPopup_Show("NOOCH_ERRORDIALOG")
         else
             local remaining = GetCooldownLeft(startTime, duration)
@@ -65,9 +66,9 @@ function NoochCooldowns(msg)
             currentTitle = transmuteText .. "+(" .. playerName .. "-" .. serverName .. ")"
             StaticPopup_Show("NOOCH_COPYPASTA")
         end
-    elseif(msg == "cloth") then
+    elseif (msg == "cloth") then
         startTime, duration, enable = GetSpellCooldown(18560)
-        if(startTime == 0) then
+        if (startTime == 0) then
             StaticPopup_Show("NOOCH_ERRORDIALOG")
         else
             local remaining = GetCooldownLeft(startTime, duration)
@@ -78,7 +79,6 @@ function NoochCooldowns(msg)
             currentDate = from .. "%2F" .. to
             currentTitle = moonclothText .. "+(" .. playerName .. "-" .. serverName .. ")"
             StaticPopup_Show("NOOCH_COPYPASTA")
-
         end
     else
         print("---------------------------------------------------")
@@ -96,7 +96,7 @@ function GetCooldownLeft(start, duration)
     if start < GetTime() then
         local cdEndTime = start + duration
         local cdLeftDuration = cdEndTime - GetTime()
-        
+
         return cdLeftDuration
     end
 
@@ -107,7 +107,7 @@ function GetCooldownLeft(start, duration)
     local cdStartTime = startupTime - cdTime
     local cdEndTime = cdStartTime + duration
     local cdLeftDuration = cdEndTime - time
-    
+
     return cdLeftDuration
 end
 
@@ -115,3 +115,23 @@ SLASH_NOOCH1 = "/nooch"
 SLASH_NOOCH2 = "/n"
 SLASH_NOOCH3 = "/cd"
 SlashCmdList["NOOCH"] = NoochCooldowns
+
+
+function NoochCDToggleActionBars()
+    if MultiBarBottomLeft:IsShown() then
+        MultiBarBottomLeft:Hide()
+        MultiBarBottomRight:Hide()
+        MultiBarLeft:Hide()
+        MultiBarRight:Hide()
+    else
+        MultiBarBottomLeft:Show()
+        MultiBarBottomRight:Show()
+        MultiBarLeft:Show()
+        MultiBarRight:Show()
+    end
+end
+
+MultiBarBottomLeft:Hide()
+MultiBarBottomRight:Hide()
+MultiBarLeft:Hide()
+MultiBarRight:Hide()
