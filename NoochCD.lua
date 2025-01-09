@@ -115,23 +115,3 @@ SLASH_NOOCH1 = "/nooch"
 SLASH_NOOCH2 = "/n"
 SLASH_NOOCH3 = "/cd"
 SlashCmdList["NOOCH"] = NoochCooldowns
-
-
-function NoochCDToggleActionBars()
-    if MultiBarBottomLeft:IsShown() then
-        MultiBarBottomLeft:Hide()
-        MultiBarBottomRight:Hide()
-        MultiBarLeft:Hide()
-        MultiBarRight:Hide()
-    else
-        MultiBarBottomLeft:Show()
-        MultiBarBottomRight:Show()
-        MultiBarLeft:Show()
-        MultiBarRight:Show()
-    end
-end
-
-MultiBarBottomLeft:Hide()
-MultiBarBottomRight:Hide()
-MultiBarLeft:Hide()
-MultiBarRight:Hide()
